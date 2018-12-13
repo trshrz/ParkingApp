@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#111">
+    android:background="#111"
+    android:id="@+id/rl">
 
     <LinearLayout
         android:layout_width="320dp"
@@ -40,7 +41,6 @@
                     android:textSize="15sp"
                     android:fontFamily="@font/proxima_nova"
                     android:text="HH:MM"
-                    android:onClick="setStartTime"
                     android:id="@+id/startTime"/>
             </LinearLayout>
 
@@ -64,7 +64,7 @@
                     android:textSize="15sp"
                     android:fontFamily="@font/proxima_nova"
                     android:text=" HH:MM "
-                    android:onClick="setEndTime"
+
                     android:id="@+id/endTime"/>
             </LinearLayout>
 

@@ -1,9 +1,13 @@
 package ruzperalta.parkingui;
 
+import android.app.Activity;
+
+import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -11,7 +15,7 @@ import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
-public class FareActivity extends AppCompatActivity {
+public class FareActivity extends Activity {
 
     TextView startTime;
     TextView endTime;
@@ -20,49 +24,25 @@ public class FareActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fare);
+        final RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
         startTime = (TextView) findViewById(R.id.startTime);
         endTime = (TextView) findViewById(R.id.endTime);
-    }
 
-    public void setStartTime(View v) {
-            Calendar calendar = Calendar.getInstance();
-            int hour = calendar.get(Calendar.HOUR);
-            int minute = calendar.get(Calendar.MINUTE);
-            TimePickerDialog timePickerDialog;
-            timePickerDialog = new TimePickerDialog(FareActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                @Override
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    String status = "AM";
-
-                    if(hourOfDay > 11) {
-                        status = "PM";
-                    }
-
-                    int hour_of_12_hour_format;
-                    if(hourOfDay > 11){
-                        hour_of_12_hour_format = hourOfDay - 12;
-                    }
-                    else {
-                        hour_of_12_hour_format = hourOfDay;
-                    }
-                    startTime.setText(hour_of_12_hour_format + " : " + minute + " : " + status);
-                }
-            }, hour, minute, false);
-            timePickerDialog.show();
-    }
-
-    public void setEndTime(View v) {
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR);
-        int minute = calendar.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog;
-        timePickerDialog = new TimePickerDialog(FareActivity.this, new TimePickerDialog.OnTimeSetListener() {
+        startTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                endTime.setText(hourOfDay+":"+minute);
+            public void onClick(View v) {
+                DialogFragment dFragment = new TimePickerFragment();
+                dFragment.show(getFragmentManager(),"Time Picker");
             }
-        }, hour, minute, false);
-        timePickerDialog.show();
+        });
+
+        endTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dFragment = new TimePickerFragment();
+                dFragment.show(getFragmentManager(),"Time Picker");
+            }
+        });
     }
 
 
