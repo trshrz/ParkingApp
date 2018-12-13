@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/llCar"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginStart="50dp">
         <ImageView
             android:id="@+id/car"
@@ -74,9 +75,23 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/llCar4"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/llCar1_1">
+        <ImageView
+            android:id="@+id/car_1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:id="@+id/llCar5">
         <ImageView
             android:id="@+id/car_5"
@@ -136,6 +151,20 @@
         android:id="@+id/llCar9">
         <ImageView
             android:id="@+id/car_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/llCar9"
+        android:id="@+id/llCar1_2">
+        <ImageView
+            android:id="@+id/car_1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/car" />
