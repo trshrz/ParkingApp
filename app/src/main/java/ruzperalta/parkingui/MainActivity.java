@@ -1,6 +1,7 @@
 package ruzperalta.parkingui;
 
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -32,80 +34,57 @@ public class MainActivity extends AppCompatActivity   {
     EditText etEmail;
     EditText etPassword;
     Button btnSignup;
-    EditText etSignupEmail;
-    EditText etSignupPassword;
-    EditText etSignupConfirm;
+
+    TextView btnCreate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fare);
+        setContentView(R.layout.activity_login);
 //        mViewPager = (ViewPager) findViewById(R.id.view_pager);
         btnLogin = findViewById(R.id.btnLogin);
         etEmail = findViewById(R.id.userEmail);
         etPassword = findViewById(R.id.userPassword);
-        etSignupEmail = findViewById(R.id.signEmail);
-        etSignupPassword = findViewById(R.id.signPassword);
-        etSignupConfirm = findViewById(R.id.signConfirm);
+
         mAuth = FirebaseAuth.getInstance();
 //        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
 //        mViewPager.setAdapter(swipeAdapter);
-        btnSignup = findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(new OnClickListener() {
+        btnCreate = findViewById(R.id.createAccount);
+        btnCreate.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etSignupEmail.getText().toString().trim();
-                String password = etSignupPassword.getText().toString().trim();
-                String confirm = etSignupConfirm.getText().toString().trim();
-                if(password.equals(confirm)){
-                    mAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // Sign in success, update UI with the signed-in user's information
-                                        Toast.makeText(MainActivity.this, "User successfully created!", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Toast.makeText(MainActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
-
-
-                                    }
-
-                                    // ...
-                                }
-                            });
-                }else{
-                    Toast.makeText(MainActivity.this, "Password do not match. Please try again.", Toast.LENGTH_SHORT).show();
-                }
-
+                Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+                startActivity(i);
+                finish();
             }
         });
-//        btnLogin.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String email = etEmail.getText().toString().trim();
-//                String password = etPassword.getText().toString().trim();
-//                mAuth.signInWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-//
-//
-//
-//                                } else {
-//                                    // If sign in fails, display a message to the user.
-//                                    Toast.makeText(MainActivity.this, "Login Failed.", Toast.LENGTH_SHORT).show();
-//
-//
-//                                }
-//
-//                                // ...
-//                            }
-//                        });
-//            }
-//        });
+        btnLogin.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = etEmail.getText().toString().trim();
+                String password = etPassword.getText().toString().trim();
+                Task<AuthResult> authResultTask = mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(MainActivity.this, ParkingActivity.class);
+                                    startActivity(i);
+                                    finish();
+
+
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(MainActivity.this, "Login Failed.", Toast.LENGTH_SHORT).show();
+
+
+                                }
+
+                                // ...
+                            }
+                        });
+            }
+        });
     }
 
 

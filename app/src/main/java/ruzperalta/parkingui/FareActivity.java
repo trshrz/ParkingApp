@@ -24,7 +24,6 @@ public class FareActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fare);
-        final RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
         startTime = (TextView) findViewById(R.id.startTime);
         endTime = (TextView) findViewById(R.id.endTime);
 
@@ -39,8 +38,8 @@ public class FareActivity extends Activity {
         endTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dFragment = new TimePickerFragment();
-                dFragment.show(getFragmentManager(),"Time Picker");
+                DialogFragment dFragment1 = new TimePickerFragment();
+                dFragment1.show(getFragmentManager(),"Time Picker");
             }
         });
     }
