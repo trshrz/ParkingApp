@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp">
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGrey"
+            android:fontFamily="@font/proxima_nova"
+            android:text="Parking"
+            android:background="@drawable/color_bubble"/>
+        <Button
+            android:layout_marginStart="70dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGrey"
+            android:fontFamily="@font/proxima_nova"
+            android:text="Fare Calculator"
+            android:background="@drawable/color_bubble"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
