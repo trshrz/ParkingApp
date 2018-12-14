@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,11 +22,13 @@ public class ParkingActivity extends AppCompatActivity {
     ImageView car1,car2,car3,car4,car5,car6,car7,car8,car9,car10,car11,car12;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    LinearLayout pSlot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        pSlot = findViewById(R.id.slot1);
         database = FirebaseDatabase.getInstance();
         showSlots();
         car1 = findViewById(R.id.car1);
@@ -40,6 +43,28 @@ public class ParkingActivity extends AppCompatActivity {
         car10 = findViewById(R.id.car10);
         car11 = findViewById(R.id.car11);
         car12 = findViewById(R.id.car12);
+        pSlot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef = database.getReference("ParkingSlot");
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Boolean value = dataSnapshot.getValue(Boolean.class);
+                        if(value.equals(false)){
+                            dataSnapshot.getRef().setValue(true);
+                            car1.setVisibility(View.VISIBLE);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 
         btnFare = findViewById(R.id.btnFare);
         btnFare.setOnClickListener(new View.OnClickListener() {
@@ -50,8 +75,6 @@ public class ParkingActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
         car1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,13 +89,8 @@ public class ParkingActivity extends AppCompatActivity {
                             dataSnapshot.getRef().setValue(false);
                             car1.setVisibility(View.INVISIBLE);
 
-                            car1.setClickable(true);
-                            car1.setAlpha(0);
                         }
-                        if(value.equals(false)){
-                            dataSnapshot.getRef().setValue(true);
-                            car1.setVisibility(View.VISIBLE);
-                        }
+
                     }
 
                     @Override
