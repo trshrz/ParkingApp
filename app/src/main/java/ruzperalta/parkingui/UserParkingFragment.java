@@ -43,14 +43,7 @@ public class UserParkingFragment extends Fragment {
         car11 = view.findViewById(R.id.car11);
 
         showSlots();
-        btnFare = view.findViewById(R.id.btnFare);
-        btnFare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), FareFragment.class);
-                startActivity(i);
-            }
-        });
+
         return view;
     }
 
@@ -247,6 +240,4 @@ public class UserParkingFragment extends Fragment {
         });
 
     }
-
-
 }

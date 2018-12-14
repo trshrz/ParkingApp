@@ -24,7 +24,7 @@ public class FareFragment extends Fragment {
 
     TextView startTime;
     TextView endTime;
-    Button btnParking;
+
     TimePickerDialog timePickerDialog;
     Calendar calendar;
     int currentHour;
@@ -37,7 +37,7 @@ public class FareFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_fare, container, false);
         startTime = view.findViewById(R.id.startTime);
         endTime = view.findViewById(R.id.endTime);
-        btnParking = view.findViewById(R.id.btnParking);
+
         btnCalculate = view.findViewById(R.id.btnCalculate);
 
         btnCalculate.setOnClickListener(new View.OnClickListener() {
@@ -123,13 +123,7 @@ public class FareFragment extends Fragment {
             }
         });
 
-        btnParking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), UserParkingFragment.class);
-                startActivity(i);
-            }
-        });
+
         return view;
     }
     public static void createAndShowToast(Context context, String message) {

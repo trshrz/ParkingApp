@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ParkingFragment extends Fragment {
-    Button btnFare;
+
     ImageView car1,car2,car3,car4,car5,car6,car7,car8,car9,car10,car11,car12;
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -29,7 +28,7 @@ public class ParkingFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_parking, container, false);
+        View view = inflater.inflate(R.layout.activity_user, container, false);
         pSlot = view.findViewById(R.id.slot1);
         pSlot2 = view.findViewById(R.id.slot2);
         pSlot3 = view.findViewById(R.id.slot3);
@@ -41,7 +40,7 @@ public class ParkingFragment extends Fragment {
         pSlot10 = view.findViewById(R.id.slot10);
         pSlot11 = view.findViewById(R.id.slot11);
         database = FirebaseDatabase.getInstance();
-        showSlots();
+//        showSlots();
         car1 = view.findViewById(R.id.car1);
         car2 = view.findViewById(R.id.car2);
         car3 = view.findViewById(R.id.car3);
@@ -75,6 +74,7 @@ public class ParkingFragment extends Fragment {
                 });
             }
         });
+
         pSlot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -769,6 +769,4 @@ public class ParkingFragment extends Fragment {
         public static void createAndShowToast(Context context, String message) {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         }
-
-
 }

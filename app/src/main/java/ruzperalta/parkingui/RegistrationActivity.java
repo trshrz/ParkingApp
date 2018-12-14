@@ -1,5 +1,6 @@
 package ruzperalta.parkingui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationActivity extends AppCompatActivity {
     Button btnSignup;
+    TextView btnToLogin;
     private FirebaseAuth mAuth;
     EditText etSignupEmail;
     EditText etSignupPassword;
@@ -29,6 +32,15 @@ public class RegistrationActivity extends AppCompatActivity {
         etSignupConfirm = findViewById(R.id.signConfirm);
         btnSignup = findViewById(R.id.btnSignup);
         mAuth = FirebaseAuth.getInstance();
+        btnToLogin = findViewById(R.id.toLogin);
+        btnToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

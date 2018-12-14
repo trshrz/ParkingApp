@@ -12,13 +12,15 @@
         android:layout_centerHorizontal="true"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo"
+        android:id="@+id/logo"/>
     <!--android:alpha="0.3"/>-->
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="60dp"
+       android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:id="@+id/email">
 
@@ -97,6 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/confirmpass"
+        android:id="@+id/signup"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true">
 
@@ -109,6 +112,22 @@
             android:text="SIGN UP"
             android:textColor="@color/darkGrey"
             android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/toLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_nova"
+            android:text="Have an account?"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
     </LinearLayout>
 
 
