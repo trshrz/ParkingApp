@@ -78,12 +78,12 @@ public class FareActivity extends Activity {
                             amPm = "PM";
                             if(hourOfDay > 12){
 
-//                                hourOfDay = hourOfDay - 12;
+                                hourOfDay = hourOfDay - 12;
                             }
                         } else {
                             amPm = "AM";
                         }
-                        hr = hourOfDay;
+                        hr = hourOfDay + 12;
                         startTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
                     }
                 }, currentHour, currentMinute, false);
@@ -109,12 +109,12 @@ public class FareActivity extends Activity {
                             amPm = "PM";
                             if(hourOfDay > 12){
 
-//                                hourOfDay = hourOfDay - 12;
+                                hourOfDay = hourOfDay - 12;
                             }
                         } else {
                             amPm = "AM";
                         }
-                        endhr = hourOfDay;
+                        endhr = hourOfDay + 12;
                         endTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
                     }
                 }, currentHour, currentMinute, false);
