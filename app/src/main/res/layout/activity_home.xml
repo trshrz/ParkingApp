@@ -3,29 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp">
-
-        <Button
-            android:layout_width="140dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/color_bubble"
-            android:fontFamily="@font/proxima_nova"
-            android:text="Parking"
-            android:textColor="@color/darkGrey" />
-
-        <Button
-            android:id="@+id/btnFare"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:background="@drawable/color_bubble"
-            android:fontFamily="@font/proxima_nova"
-            android:text="Fare Calculator"
-            android:textColor="@color/darkGrey" />
+            android:text="PARKING"
+            android:textSize="28sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -110,16 +98,6 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:src="@drawable/car" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/slot6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slot5"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp">
-
     </LinearLayout>
 
     <LinearLayout
@@ -208,16 +186,7 @@
             android:src="@drawable/car" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/slot12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slot11"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp">
 
-    </LinearLayout>
 
 
 </RelativeLayout>

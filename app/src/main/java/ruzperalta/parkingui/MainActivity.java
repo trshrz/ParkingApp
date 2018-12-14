@@ -1,20 +1,20 @@
 package ruzperalta.parkingui;
 
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
-import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Display;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,17 +23,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import java.util.*;
 
-public class MainActivity extends AppCompatActivity   {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener   {
     ViewPager mViewPager;
     private FirebaseAuth mAuth;
     Button btnLogin;
     EditText etEmail;
     EditText etPassword;
     Button btnSignup;
+    private DrawerLayout main_drawer;
 
     TextView btnCreate;
     @Override
@@ -71,11 +70,11 @@ public class MainActivity extends AppCompatActivity   {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
                                     if(email.equals("admin@gmail.com")){
-                                        Intent i = new Intent(MainActivity.this, ParkingActivity.class);
+                                        Intent i = new Intent(MainActivity.this, ParkingFragment.class);
                                         startActivity(i);
                                         finish();
                                     }else{
-                                        Intent i = new Intent(MainActivity.this, UserParkingActivity.class);
+                                        Intent i = new Intent(MainActivity.this, UserParkingFragment.class);
                                         startActivity(i);
                                         finish();
                                     }
@@ -96,7 +95,54 @@ public class MainActivity extends AppCompatActivity   {
         });
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.navParking:
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.fragment_container, new UserParkingFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.navFareCalculator:
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.fragment_container, new FareFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.navSettings:
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.fragment_container,
+                        new SettingsFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.navLogout:
+//                try {
+//                    AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            Intent logoutUser = new Intent(MainActivity.this, MainActivity.class);
+//
+//                            createAndShowToast(MainActivity.this, "Successfully logged out");
+//
+//                            startActivity(logoutUser);
+//                        }
+//                    });
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+        }
 
+        main_drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    @Override
+    public void onBackPressed() {
+        getSupportFragmentManager().executePendingTransactions();
+        if (main_drawer.isDrawerOpen(GravityCompat.START)) {
+            main_drawer.closeDrawer(GravityCompat.START);
+        } else {
+
+        }
+    }
+
+
+
+    public static void createAndShowToast(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
 
 
 

@@ -2,25 +2,25 @@ package ruzperalta.parkingui;
 
 import android.app.Activity;
 
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
 
-public class FareActivity extends Activity {
+public class FareFragment extends Fragment {
 
     TextView startTime;
     TextView endTime;
@@ -33,13 +33,12 @@ public class FareActivity extends Activity {
     int hr, endhr;
     Button btnCalculate;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fare);
-        startTime = (TextView) findViewById(R.id.startTime);
-        endTime = (TextView) findViewById(R.id.endTime);
-        btnParking = findViewById(R.id.btnParking);
-        btnCalculate = findViewById(R.id.btnCalculate);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_fare, container, false);
+        startTime = view.findViewById(R.id.startTime);
+        endTime = view.findViewById(R.id.endTime);
+        btnParking = view.findViewById(R.id.btnParking);
+        btnCalculate = view.findViewById(R.id.btnCalculate);
 
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +60,7 @@ public class FareActivity extends Activity {
                     fare = 50;
                 }
 
-                Toast.makeText(FareActivity.this, "Fare is " + fare + " pesos.", Toast.LENGTH_LONG).show();
+                createAndShowToast(getContext(), "Fare is " + fare + " pesos.");
             }
         });
         startTime.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +70,7 @@ public class FareActivity extends Activity {
                 currentHour = calendar.get(Calendar.HOUR_OF_DAY);
                 currentMinute = calendar.get(Calendar.MINUTE);
 
-                timePickerDialog = new TimePickerDialog(FareActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         if (hourOfDay >= 12) {
@@ -102,7 +101,7 @@ public class FareActivity extends Activity {
                 currentHour = calendar.get(Calendar.HOUR_OF_DAY);
                 currentMinute = calendar.get(Calendar.MINUTE);
 
-                timePickerDialog = new TimePickerDialog(FareActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         if (hourOfDay >= 12) {
@@ -127,13 +126,15 @@ public class FareActivity extends Activity {
         btnParking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FareActivity.this, UserParkingActivity.class);
+                Intent i = new Intent(getActivity(), UserParkingFragment.class);
                 startActivity(i);
-                finish();
             }
         });
+        return view;
     }
-
+    public static void createAndShowToast(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
 
 
 }

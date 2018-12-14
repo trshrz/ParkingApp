@@ -2,9 +2,13 @@ package ruzperalta.parkingui;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -14,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserParkingActivity extends AppCompatActivity {
+public class UserParkingFragment extends Fragment {
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -22,32 +26,32 @@ public class UserParkingActivity extends AppCompatActivity {
     ImageView car1,car2,car3,car4,car5,car6,car7,car8,car9,car10,car11,car12;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_user, container, false);
+
         database = FirebaseDatabase.getInstance();
-        car1 = findViewById(R.id.car1);
-        car2 = findViewById(R.id.car2);
-        car3 = findViewById(R.id.car3);
-        car4 = findViewById(R.id.car4);
-        car5 = findViewById(R.id.car5);
+        car1 = view.findViewById(R.id.car1);
+        car2 = view.findViewById(R.id.car2);
+        car3 = view.findViewById(R.id.car3);
+        car4 = view.findViewById(R.id.car4);
+        car5 = view.findViewById(R.id.car5);
 //        car6 = findViewById(R.id.car6);
-        car7 = findViewById(R.id.car7);
-        car8 = findViewById(R.id.car8);
-        car9 = findViewById(R.id.car9);
-        car10 = findViewById(R.id.car10);
-        car11 = findViewById(R.id.car11);
+        car7 = view.findViewById(R.id.car7);
+        car8 = view.findViewById(R.id.car8);
+        car9 = view.findViewById(R.id.car9);
+        car10 = view.findViewById(R.id.car10);
+        car11 = view.findViewById(R.id.car11);
 
         showSlots();
-        btnFare = findViewById(R.id.btnFare);
+        btnFare = view.findViewById(R.id.btnFare);
         btnFare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(UserParkingActivity.this, FareActivity.class);
+                Intent i = new Intent(getActivity(), FareFragment.class);
                 startActivity(i);
-                finish();
             }
         });
+        return view;
     }
 
     public void showSlots(){

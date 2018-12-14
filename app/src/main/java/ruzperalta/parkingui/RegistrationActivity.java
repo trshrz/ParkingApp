@@ -43,7 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(RegistrationActivity.this, ParkingActivity.class);
+                                        Intent i = new Intent(RegistrationActivity.this, ParkingFragment.class);
                                         startActivity(i);
                                         finish();
                                     } else {
