@@ -29,157 +29,193 @@
 
     <LinearLayout
         android:id="@+id/slot1"
-        android:layout_width="68dp"
-        android:layout_height="73dp"
+        android:layout_width="77dp"
+        android:layout_height="72dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/parkingslotleft">
 
         <ImageView
             android:id="@+id/car1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/car" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/slot2"
+        android:layout_width="75dp"
+        android:layout_height="69dp"
+        android:layout_below="@+id/slot1"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/parkingslotleft">
+
+        <ImageView
+            android:id="@+id/car2"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:layout_weight="1"
             android:src="@drawable/car" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/slot3"
+        android:layout_width="75dp"
+        android:layout_height="72dp"
+        android:layout_below="@+id/slot2"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/parkingslotleft">
+
+        <ImageView
+            android:id="@+id/car3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:src="@drawable/car" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/slot4"
+        android:layout_width="76dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/slot3"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/parkingslotleft">
+
+        <ImageView
+            android:id="@+id/car4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:src="@drawable/car" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/slot5"
+        android:layout_width="75dp"
+        android:layout_height="66dp"
+        android:layout_below="@+id/slot4"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/parkingslotleft">
+
+        <ImageView
+            android:id="@+id/car5"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:src="@drawable/car" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/slot6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/slot1"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/slot5"
         android:layout_marginStart="50dp"
-        android:id="@+id/llCar1">
+        android:layout_marginTop="20dp">
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/llCar1"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/llCar2">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/llCar2"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/llCar3">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/llCar3"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/llCar4">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/llCar4"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/llCar1_1">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/slot7"
+        android:layout_width="79dp"
+        android:layout_height="64dp"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="100dp"
-        android:id="@+id/llCar5">
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="42dp"
+        android:background="@drawable/parkingslotright">
 
         <ImageView
             android:id="@+id/car7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/car" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/slot8"
+        android:layout_width="79dp"
+        android:layout_height="66dp"
+        android:layout_below="@+id/slot7"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/llCar5"
-        android:id="@+id/llCar6">
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/parkingslotright">
 
         <ImageView
             android:id="@+id/car8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/car" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/slot9"
+        android:layout_width="78dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/slot8"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/llCar6"
-        android:id="@+id/llCar7">
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/parkingslotright">
 
         <ImageView
             android:id="@+id/car9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/car" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/slot10"
+        android:layout_width="77dp"
+        android:layout_height="76dp"
+        android:layout_below="@+id/slot9"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/llCar7"
-        android:id="@+id/llCar8">
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/parkingslotright">
 
         <ImageView
             android:id="@+id/car10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/car" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/slot11"
+        android:layout_width="76dp"
+        android:layout_height="65dp"
+        android:layout_below="@+id/slot10"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/llCar8"
-        android:id="@+id/llCar9">
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="83dp"
+        android:background="@drawable/parkingslotright">
 
         <ImageView
             android:id="@+id/car11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/car" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/slot12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/slot11"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/llCar9"
-        android:id="@+id/llCar1_2">
+        android:layout_marginEnd="50dp">
 
-        <ImageView
-            android:id="@+id/car12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/car" />
     </LinearLayout>
 
 
