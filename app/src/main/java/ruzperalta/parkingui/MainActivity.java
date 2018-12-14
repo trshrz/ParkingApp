@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity   {
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etEmail.getText().toString().trim();
+
+
+                final String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 Task<AuthResult> authResultTask = mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
@@ -68,14 +70,21 @@ public class MainActivity extends AppCompatActivity   {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(MainActivity.this, ParkingActivity.class);
-                                    startActivity(i);
-                                    finish();
+                                    if(email.equals("admin@gmail.com")){
+                                        Intent i = new Intent(MainActivity.this, ParkingActivity.class);
+                                        startActivity(i);
+                                        finish();
+                                    }else{
+                                        Intent i = new Intent(MainActivity.this, UserParkingActivity.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
 
 
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(MainActivity.this, "Login Failed.", Toast.LENGTH_SHORT).show();
+
 
 
                                 }

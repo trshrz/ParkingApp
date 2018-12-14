@@ -298,15 +298,7 @@ public class ParkingActivity extends AppCompatActivity {
 
 
 
-        btnFare = findViewById(R.id.btnFare);
-        btnFare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ParkingActivity.this, FareActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
         car1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
