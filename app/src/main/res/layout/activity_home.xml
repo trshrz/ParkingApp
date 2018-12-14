@@ -29,16 +29,16 @@
 
     <LinearLayout
         android:id="@+id/slot1"
-        android:layout_width="68dp"
-        android:layout_height="73dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
-        android:background="@drawable/parkingslotleft">
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/car" />
     </LinearLayout>
 
@@ -48,7 +48,14 @@
         android:layout_below="@+id/slot1"
         android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
-        android:id="@+id/llCar1">
+        android:id="@+id/llCar1"
+        android:background="#D3D3D3">
+        <ImageView
+
+            android:id="@+id/car2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
 
     </LinearLayout>
 
@@ -58,7 +65,13 @@
         android:layout_below="@+id/llCar1"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/llCar2">
+        android:id="@+id/llCar2"
+        android:background="#D3D3D3">
+        <ImageView
+            android:id="@+id/car3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
 
     </LinearLayout>
 
@@ -68,8 +81,13 @@
         android:layout_below="@+id/llCar2"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/llCar3">
-
+        android:id="@+id/llCar3"
+        android:background="#D3D3D3">
+        <ImageView
+            android:id="@+id/car4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +96,13 @@
         android:layout_below="@+id/llCar3"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/llCar4">
+        android:id="@+id/llCar4"
+        android:background="#D3D3D3">
+        <ImageView
+            android:id="@+id/car5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
 
     </LinearLayout>
 
@@ -88,17 +112,24 @@
         android:layout_below="@+id/llCar4"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/llCar1_1">
+        android:id="@+id/llCar1_1"
+        android:background="#D3D3D3">
+        <ImageView
+            android:id="@+id/car6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="100dp"
-        android:id="@+id/llCar5">
+        android:id="@+id/llCar5"
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car7"
@@ -109,11 +140,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/llCar5"
-        android:id="@+id/llCar6">
+        android:id="@+id/llCar6"
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car8"
@@ -124,11 +156,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/llCar6"
-        android:id="@+id/llCar7">
+        android:id="@+id/llCar7"
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car9"
@@ -139,11 +172,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/llCar7"
-        android:id="@+id/llCar8">
+        android:id="@+id/llCar8"
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car10"
@@ -154,11 +188,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/llCar8"
-        android:id="@+id/llCar9">
+        android:id="@+id/llCar9"
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car11"
@@ -169,11 +204,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/llCar9"
-        android:id="@+id/llCar1_2">
+        android:id="@+id/llCar1_2"
+        android:background="#D3D3D3">
 
         <ImageView
             android:id="@+id/car12"
