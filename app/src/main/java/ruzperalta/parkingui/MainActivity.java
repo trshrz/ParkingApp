@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener   {
@@ -48,11 +49,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            FirebaseAuth.getInstance().signOut();
+
                             Intent logoutUser = new Intent(MainActivity.this, LoginActivity.class);
 
 
 
                             startActivity(logoutUser);
+                            finish();
                         }
                     });
                 } catch (Exception e) {

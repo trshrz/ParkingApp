@@ -10,13 +10,14 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/ll"
         android:layout_marginTop="150dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:textColor="@color/white"
             android:fontFamily="@font/proxima_nova"
-            android:text="The car is gone?"/>
+            android:text="Remove Car?"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
     </LinearLayout>
 
 
@@ -27,21 +28,25 @@
         android:layout_below="@+id/ll"
 
         android:layout_centerHorizontal="true">
+
         <Button
+            android:id="@+id/btnRyes"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/darkGrey"
+            android:background="@drawable/color_bubble"
             android:fontFamily="@font/proxima_nova"
             android:text="Yes"
-            android:background="@drawable/color_bubble"/>
+            android:textColor="@color/darkGrey" />
+
         <Button
-            android:layout_marginStart="40dp"
+            android:id="@+id/btnRno"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/darkGrey"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/color_bubble"
             android:fontFamily="@font/proxima_nova"
             android:text="No"
-            android:background="@drawable/color_bubble"/>
+            android:textColor="@color/darkGrey" />
     </LinearLayout>
 
 </RelativeLayout>

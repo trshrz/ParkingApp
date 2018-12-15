@@ -1,5 +1,6 @@
 package ruzperalta.parkingui;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,7 +29,9 @@ public class ParkingFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.activity_user, container, false);
+
         pSlot = view.findViewById(R.id.slot1);
         pSlot2 = view.findViewById(R.id.slot2);
         pSlot3 = view.findViewById(R.id.slot3);
@@ -53,114 +56,211 @@ public class ParkingFragment extends Fragment {
         car10 = view.findViewById(R.id.car10);
         car11 = view.findViewById(R.id.car11);
 //        car12 = findViewById(R.id.car12);
+        showSlots();
         pSlot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car1.setVisibility(View.VISIBLE);
-                        }
-                    }
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car1.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
 
         pSlot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot2");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car2.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot2");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car2.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
         pSlot3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot3");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car3.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot3");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car3.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
         pSlot4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot4");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car4.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot4");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car4.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
         pSlot5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot5");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car5.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot5");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car5.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
 //        pSlot6.setOnClickListener(new View.OnClickListener() {
@@ -188,65 +288,121 @@ public class ParkingFragment extends Fragment {
         pSlot7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot7");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car7.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot7");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car7.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
         pSlot8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot8");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car8.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot8");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car8.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            }
+                        });
                     }
                 });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
+
             }
         });
         pSlot9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot9");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car9.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot9");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car9.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
-
+                });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    public void onClick(View v) {
+                        dialog.hide();
                     }
                 });
             }
@@ -254,21 +410,39 @@ public class ParkingFragment extends Fragment {
         pSlot10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot10");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car10.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot10");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car10.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
-
+                });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    public void onClick(View v) {
+                        dialog.hide();
                     }
                 });
             }
@@ -276,21 +450,39 @@ public class ParkingFragment extends Fragment {
         pSlot11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference("ParkingSlot11");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_occupy, null);
+                Button btnYes = mview.findViewById(R.id.btnYes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(false)) {
-                            dataSnapshot.getRef().setValue(true);
-                            car11.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot11");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(false)) {
+                                    dataSnapshot.getRef().setValue(true);
+                                    car11.setVisibility(View.VISIBLE);
+                                }
+                            }
 
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
-
+                });
+                Button btnNo = mview.findViewById(R.id.btnNo);
+                btnNo.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    public void onClick(View v) {
+                        dialog.hide();
                     }
                 });
             }
@@ -300,271 +492,459 @@ public class ParkingFragment extends Fragment {
         car1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car1.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car1.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot2");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car2.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot2");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car2.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot3");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car3.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot3");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car3.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot4");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car4.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot4");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car4.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot5");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car5.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot5");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car5.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot7");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car7.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot7");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car7.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot8");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car8.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot8");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car8.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot9");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car9.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot9");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car9.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot10");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car10.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot10");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car10.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
         car11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createAndShowToast(getContext(), " is clicked.");
-                myRef = database.getReference("ParkingSlot11");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.activity_remove, null);
+                Button btnRYes = mview.findViewById(R.id.btnRyes);
+                builder.setView(mview);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+//                createAndShowToast(getContext(), " is clicked.");
+                btnRYes.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Boolean value = dataSnapshot.getValue(Boolean.class);
-                        if (value.equals(true)) {
-                            dataSnapshot.getRef().setValue(false);
-                            car11.setVisibility(View.INVISIBLE);
+                    public void onClick(View v) {
+                        dialog.hide();
+                        myRef = database.getReference("ParkingSlot11");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Boolean value = dataSnapshot.getValue(Boolean.class);
+                                if (value.equals(true)) {
+                                    dataSnapshot.getRef().setValue(false);
+                                    car11.setVisibility(View.INVISIBLE);
 
-                        }
+                                }
 
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                            }
+                        });
+
+                        showSlots();
                     }
                 });
-
-                showSlots();
+                Button btnRNo = mview.findViewById(R.id.btnRno);
+                btnRNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.hide();
+                    }
+                });
             }
         });
 

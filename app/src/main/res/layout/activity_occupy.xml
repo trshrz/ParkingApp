@@ -27,21 +27,25 @@
         android:layout_below="@+id/ll"
 
         android:layout_centerHorizontal="true">
+
         <Button
+            android:id="@+id/btnYes"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/darkGrey"
+            android:background="@drawable/color_bubble"
             android:fontFamily="@font/proxima_nova"
             android:text="Yes"
-            android:background="@drawable/color_bubble"/>
+            android:textColor="@color/darkGrey" />
+
         <Button
-            android:layout_marginStart="40dp"
+            android:id="@+id/btnNo"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/darkGrey"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/color_bubble"
             android:fontFamily="@font/proxima_nova"
             android:text="No"
-            android:background="@drawable/color_bubble"/>
+            android:textColor="@color/darkGrey" />
     </LinearLayout>
 
 </RelativeLayout>

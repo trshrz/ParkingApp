@@ -33,34 +33,19 @@
         android:id="@+id/password"
         android:layout_below="@id/title">
 
-        <EditText
-            android:id="@+id/signPassword"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:alpha="0.6"
-            android:background="@drawable/bubble"
-            android:drawableLeft="@drawable/icon_lock_outline"
-            android:elevation="1dp"
-            android:focusable="true"
-            android:fontFamily="@font/proxima_nova"
-            android:hint=" Password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:textColor="@color/darkGrey"
-            android:textColorHint="@color/darkGrey"
-            android:textSize="18sp" />
     </LinearLayout>
 
+
     <LinearLayout
+        android:id="@+id/confirmpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
-        android:id="@+id/confirmpass"
-        android:layout_below="@id/password">
+        android:layout_marginTop="95dp">
 
         <EditText
-            android:id="@+id/signConfirm"
+            android:id="@+id/changeConfirm"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:alpha="0.6"
@@ -77,6 +62,31 @@
             android:textSize="18sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/newpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp">
+
+        <EditText
+            android:id="@+id/changeNewPass"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:alpha="0.6"
+            android:background="@drawable/bubble"
+            android:drawableLeft="@drawable/icon_lock_outline"
+            android:elevation="1dp"
+            android:focusable="true"
+            android:fontFamily="@font/proxima_nova"
+            android:hint="New Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/darkGrey"
+            android:textColorHint="@color/darkGrey"
+            android:textSize="18sp" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
