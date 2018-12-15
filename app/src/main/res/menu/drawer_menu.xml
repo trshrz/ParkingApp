@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <group android:checkableBehavior="single">
+
+
+        <item android:id="@+id/navParking"
+            android:icon="@drawable/icon_parking"
+            android:title="Parking"/>
+        <item android:id="@+id/navFareCalculator"
+            android:icon="@drawable/icon_calculator"
+            android:title="Fare Calculator"/>
+
+        <item android:id="@+id/navSettings"
+            android:icon="@drawable/icon_settings"
+            android:title="Settings"/>
+
+        <item android:id="@+id/navLogout"
+            android:icon="@drawable/icon_logout"
+            android:title="Logout" />
+
+    </group>
+
+</menu>
