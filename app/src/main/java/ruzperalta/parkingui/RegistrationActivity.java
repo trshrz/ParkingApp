@@ -47,30 +47,44 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = etSignupEmail.getText().toString().trim();
                 String password = etSignupPassword.getText().toString().trim();
                 String confirm = etSignupConfirm.getText().toString().trim();
-                if(password.equals(confirm)){
-                    mAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // Sign in success, update UI with the signed-in user's information
-                                        Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(RegistrationActivity.this, ParkingFragment.class);
-                                        startActivity(i);
-                                        finish();
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Toast.makeText(RegistrationActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
-
-
-                                    }
-
-                                    // ...
-                                }
-                            });
+                if(email.isEmpty() || password.isEmpty() || confirm.isEmpty()){
+                    if(email.isEmpty()){
+                        etSignupEmail.setError("Please fill up field.");
+                    }
+                    if(password.isEmpty()){
+                        etSignupPassword.setError("Please fill up field.");
+                    }
+                    if(confirm.isEmpty()){
+                        etSignupConfirm.setError("Please fill up field.");
+                    }
                 }else{
-                    Toast.makeText(RegistrationActivity.this, "Password do not match. Please try again.", Toast.LENGTH_SHORT).show();
+                    if(password.equals(confirm)){
+                        mAuth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            // Sign in success, update UI with the signed-in user's information
+                                            Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(RegistrationActivity.this, ParkingFragment.class);
+                                            startActivity(i);
+                                            finish();
+                                        } else {
+                                            // If sign in fails, display a message to the user.
+                                            Toast.makeText(RegistrationActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
+
+
+                                        }
+
+                                        // ...
+                                    }
+                                });
+                    }else{
+                        Toast.makeText(RegistrationActivity.this, "Password do not match. Please try again.", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+
 
             }
         });

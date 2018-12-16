@@ -47,32 +47,42 @@ public class LoginActivity extends AppCompatActivity {
 
                 final String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-                Task<AuthResult> authResultTask = mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                                    if(email.equals("admin@gmail.com")){
-                                        Intent i = new Intent(LoginActivity.this, AdminMainActivity.class);
-                                        startActivity(i);
-                                    }else{
-                                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                        startActivity(i);
+                if(email.isEmpty() || password.isEmpty()){
+                    if(email.isEmpty()){
+                        etEmail.setError("Please fill up field.");
+                    }
+                    if(password.isEmpty()){
+                        etPassword.setError("Please fill up field.");
+                    }
+                }else{
+                    Task<AuthResult> authResultTask = mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
+                                        if(email.equals("admin@gmail.com")){
+                                            Intent i = new Intent(LoginActivity.this, AdminMainActivity.class);
+                                            startActivity(i);
+                                        }else{
+                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(i);
+                                        }
+
+
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(LoginActivity.this, "Login Failed.", Toast.LENGTH_SHORT).show();
+
+
+
                                     }
 
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(LoginActivity.this, "Login Failed.", Toast.LENGTH_SHORT).show();
-
-
-
+                                    // ...
                                 }
+                            });
+                }
 
-                                // ...
-                            }
-                        });
             }
         });
     }
