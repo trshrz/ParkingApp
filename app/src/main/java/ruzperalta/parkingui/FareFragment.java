@@ -43,24 +43,31 @@ public class FareFragment extends Fragment {
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int fare,calculate;
-                Log.e("Raffy", hr + "");
-                Log.e("Raffy", endhr + "");
-                if(hr > endhr){
-                    endhr = endhr + 24;
-                }
-                calculate = endhr - hr;
+                String start = startTime.getText().toString().trim();
+                String end = startTime.getText().toString().trim();
 
-                if(calculate > 3){
-                    calculate = calculate - 3;
-                    fare = 50 + (calculate*10);
-                }else if(calculate == 0){
-                    fare = 150;
-                }else{
-                    fare = 50;
-                }
+                if(start.equals("HH:MM") || end.equals("HH:MM")){
+                    Toast.makeText(getContext(), "Please enter time.", Toast.LENGTH_SHORT).show();
+                }else {
+                    int fare,calculate;
+                    Log.e("Raffy", hr + "");
+                    Log.e("Raffy", endhr + "");
+                    if(hr > endhr){
+                        endhr = endhr + 24;
+                    }
+                    calculate = endhr - hr;
 
-                createAndShowToast(getContext(), "Fare is " + fare + " pesos.");
+                    if(calculate > 3){
+                        calculate = calculate - 3;
+                        fare = 50 + (calculate*10);
+                    }else if(calculate == 0){
+                        fare = 150;
+                    }else{
+                        fare = 50;
+                    }
+
+                    createAndShowToast(getContext(), "Fare is " + fare + " pesos.");
+                }
             }
         });
         startTime.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +134,7 @@ public class FareFragment extends Fragment {
         return view;
     }
     public static void createAndShowToast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
 
